@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GMC: Global Motion Corresponder for 3D Point-Based Scene Interpolation under Large Motion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      html,body,h1,h2,h3,h4,h5,h6 {font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+      <!-- .cite { background:#f0f0f0; padding:10px; font-size:18px} -->
+      .cite { padding:0px; background:#ffffff; font-size:18px}
+      .card {border: 1px solid #ccc}
+      img { margin-bottom:-6px;}
+      p { font-size:18px;}
+      a {text-decoration: none; color: #2196F3;}
+      .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+      box-shadow:
+      0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+      5px 5px 0 0px #fff, /* The second layer */
+      5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+      10px 10px 0 0px #fff, /* The third layer */
+      10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+      15px 15px 0 0px #fff, /* The fourth layer */
+      15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+      20px 20px 0 0px #fff, /* The fifth layer */
+      20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+      25px 25px 0 0px #fff, /* The fifth layer */
+      25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+      margin-left: 10px;
+      margin-right: 60px;
+      }
+    </style>
+  </head>  
+  <body class="w3-white">
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top w3-margin-bottom" style="max-width:960px;">
+
+      <!-- The Grid -->
+      <div class="w3-row-padding">
+
+
+	<!-- paper container -->	  
+	<div class="w3-display-container w3-row w3-white w3-margin-bottom">
+	  <div class="w3-center">
+		<!-- <h1 style="font-size: 40px;">Global Motion Corresponder for 3D Point-Based Scene Interpolation under Large Motion</h1> -->
+		<h1 style="font-size: 40px; margin-bottom: -20px; margin-top: 50px;">Global Motion Corresponder for 3D Point-Based</h1>
+		<h1 style="font-size: 40px;">Scene Interpolation under Large Motion</h1>
+		<h2 style="font-size: 25px;"><i>ICCV 2025</i></h2>
+		<!-- Author List -->
+		<!-- <p class="w3-large""> -->
+		<p class="w3-large" style="margin-bottom: -15px;">
+			<a href="https://junrul.github.io" target="_blank">Junru Lin</a><sup>*1,2</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://serchirag.github.io" target="_blank">Chirag Vashist</a><sup>*3</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://mikacuy.github.io" target="_blank">Mikaela Angelina Uy</a><sup>2,4</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://coltonstearns.github.io" target="_blank">Colton Stearns</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</p>
+		<p class="w3-large"">
+			<a href="https://roxanneluo.github.io" target="_blank">Xuan Luo</a><sup>5</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://geometry.stanford.edu/?member=guibas" target="_blank">Leonidas Guibas</a><sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://www.sfu.ca/~keli/" target="_blank">Ke Li</a><sup>3</sup>
+		</p>
+		<!-- Affiliations -->
+		<p class="w3-large" style="margin-bottom: -15px;">
+			<sup>1</sup>University of Toronto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<sup>2</sup>Stanford University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<sup>3</sup>Simon Fraser University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<sup>4</sup>Nvidia&nbsp;&nbsp;&nbsp;&nbsp;
+			<sup>5</sup>Google
+		</p>
+		<!-- Affiliations -->
+		<p class="w3-large"">
+			<sup>*</sup>equal contribution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</p>
+		<!-- Links for paper, arxiv, video, code, and data -->
+		<p class="w3-large">
+		<a href="https://gmc.github.io/" target="_blank"><i class="fa fa-file-text-o w3-xlarge"></i> Paper (coming soon)</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<!-- <a href="video_link" target="_blank"><i class="fa fa-youtube-play w3-xlarge"></i> Video</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+		<a href="https://gmc.github.io/"><i class="fa fa-github w3-xlarge"></i> Code (coming soon)</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://gmc.github.io/"><i class="fa fa-database w3-xlarge"></i> Data (coming soon)</a>
+
+
+		<br>
+		<div class="w3-center">
+		</div>
+
+			<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;margin-top:10px;">
+				<tr style="padding:0px">
+				<td style="padding-right:1%;width:24%;vertical-align:middle">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+				<source src="videos/interpolation/synthetic/ball.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+
+				</td>
+				<td style="padding-right:1%;width:24%;vertical-align:middle">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+				<source src="videos/interpolation/synthetic/dolphin.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+
+				</td>
+				<td style="padding-right:1%;width:24%;vertical-align:middle">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+				<source src="videos/interpolation/synthetic/seagull.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+
+				</td>
+				</tr>
+			</table>
+
+
+	  <!--	==============================================================  -->
+	  <!--	==============================================================  -->
+	  <!--	  Begin Abstract -->
+	  <hr>
+	  <div class="w3-center">
+	    <h2>Abstract</h2>
+	  </div>
+	  <p style="text-align: justify;">Existing dynamic scene interpolation methods typically assume that the motion between consecutive time steps is small enough so that displacements can be locally approximated by linear models. In practice, even slight deviations from this small-motion assumption can cause conventional techniques to fail. In this paper, we introduce <b>Global Motion Corresponder</b> (GMC), a novel approach that robustly handles large motion and achieves smooth transitions. GMC learns unary potential fields that predict SE(3) mappings into a shared canonical space, balancing correspondence, spatial and semantic smoothness, and local rigidity. We demonstrate that our method significantly outperforms existing baselines on 3D scene interpolation when the two states undergo large global motions. Furthermore, our method enables extrapolation capabilities where other baseline methods cannot.</p>
+	  <hr>
+	  <!--	==============================================================  -->
+
+
+		<!--	==============================================================  -->
+		<!--	==============================================================  -->
+		<!--	  Begin Teaser -->
+
+		<div class="w3-center">
+			<h2>Global Motion Challenge</h2>
+		</div>
+		<div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+			<img src="images/teaser.png" alt="Teaser Image" style="width:100%;max-width:1000px;">
+		</div>
+
+		<p style="text-align: justify;">(1) Left: For small inter-frame motion, determining a point’s motion is effectively equivalent to matching it with a corresponding point within a small local neighborhood. Local neighborhood searches yield correct correspondence and motion prediction. 
+        (2) Middle: With large global motion, local searches lead to a wrong corresponding region.
+        (3) Right: An ideal method would be able to predict correct correspondence and achieve global motion.</p>
+
+		<hr>
+
+
+	  <!--	==============================================================  -->
+	  <!--	==============================================================  -->
+	  
+	  <div class="w3-center">
+	    <h2>Method Overview</h2>
+	  </div>
+	  <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+		<img src="images/method.svg" alt="Method Overview" style="width:100%;max-width:1000px;">
+	  </div>
+	  <p style="text-align: justify;">Firstly, two 3D Gaussian Splatting (3DGS) models are trained from the start state and end state (column 1). 
+		Then, the Gaussians from both models are transformed into a SE(3) canonical space where they align with each other (column 2). 
+		After alignment, 3D matching is established, where the Gaussians from both models are colored with PCA-DINO features (column 3). 
+		Finally, the continuous 3D interpolation is derived, as shown in the last column (column 4).</p>
+	  <hr>
+	 
+	  <!--	==============================================================  -->
+
+
+  <!--	==============================================================  -->
+  <!--	==============================================================  -->
+  <!--	  Begin Qualitative Results -->
+	<br>
+	  <div class="w3-center">
+	    <h2>Scene Interpolation Results</h2>
+	  </div>	
+	<br>
+
+	<br>
+	  <div class="w3-center">
+	  </div>
+
+	    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;margin-top:10px;">
+			<tr style="padding:0px">
+			<td style="padding-right:1%;width:24%;vertical-align:middle">
+			<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+			<source src="videos/interpolation/synthetic/butterfly.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+			</video>
+
+			</td>
+			<td style="padding-right:1%;width:24%;vertical-align:middle">
+			<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+			<source src="videos/interpolation/synthetic/knight.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+			</video>
+
+			</td>
+			<td style="padding-right:1%;width:24%;vertical-align:middle">
+			<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+			<source src="videos/interpolation/synthetic/microwave.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+			</video>
+
+			</td>
+			</tr>
+		</table>
+
+		<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;margin-top:10px;">
+			<tr style="padding:0px">
+			<td style="padding-right:1%;width:24%;vertical-align:middle">
+			<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+			<source src="videos/interpolation/real_world/box.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+			</video>
+
+			</td>
+			<td style="padding-right:1%;width:24%;vertical-align:middle">
+			<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+			<source src="videos/interpolation/real_world/shoe.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+			</video>
+
+			</td>
+			<td style="padding-right:1%;width:24%;vertical-align:middle">
+			<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+			<source src="videos/interpolation/real_world/tripod.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+			</video>
+
+			</td>
+			</tr>
+		</table>
+
+
+	  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;margin-top:10px;">
+		<tr style="padding:0px">
+		  <td style="padding-right:1%;width:24%;vertical-align:middle">
+		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+		  <source src="videos/interpolation/real_world/dg_boxes.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+		</video>
+
+		  </td>
+		  <td style="padding-right:1%;width:24%;vertical-align:middle">
+		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+		  <source src="videos/interpolation/real_world/dg_football.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+		</video>
+
+		  </td>
+		  <td style="padding-right:1%;width:24%;vertical-align:middle">
+		<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+		  <source src="videos/interpolation/real_world/dg_softball.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+		</video>
+
+		  </td>
+		</tr>
+	  </table>
+
+
+
+
+	  <!--	==============================================================  -->
+	  <!--	==============================================================  -->
+	  <hr>
+	  <br>
+	  <div class="w3-center">
+	  <h2>Ablation Study</h2>
+	  </div>
+
+
+	<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin:auto;margin-top:10px;">
+		<tr style="padding:0px">
+			<td style="padding-right:1%;width:24%;vertical-align:middle;text-align:center">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+					<source src="videos/ablation/no_dino/butterfly.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+				<div style="font-size:16px;margin-top:5px;">No DINO Input</div>
+			</td>
+			<td style="padding-right:1%;width:24%;vertical-align:middle;text-align:center">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+					<source src="videos/ablation/no_position/butterfly.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+				<div style="font-size:16px;margin-top:5px;">No Position Input</div>
+			</td>
+			<td style="padding-right:1%;width:24%;vertical-align:middle;text-align:center">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+					<source src="videos/ablation/no_local/butterfly.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+				<div style="font-size:16px;margin-top:5px;">No Local Isometry Loss</div>
+			</td>
+			<td style="width:24%;vertical-align:middle;text-align:center">
+				<video controls style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true" muted="true">
+					<source src="videos/ablation/no_joint_refinement/butterfly.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+				</video>
+				<div style="font-size:16px;margin-top:5px;">No Joint Refinement</div>
+			</td>
+		</tr>
+	</table>
+
+<!--		===============================================================================================-->
+<!--		===============================================================================================-->
+<!--		===============================================================================================-->
+
+
+	</div><!-- End Grid -->
+      </div><!-- End Page Container -->
+
+  </body>
+</html>
